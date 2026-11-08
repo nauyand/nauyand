@@ -1,0 +1,17 @@
+{
+  "name": "DELTA FORCE",
+  "sub": "HAZARD OPS",
+  "link": "",
+  "top": [
+    {"name": "Donatur 1", "amount": 500000},
+    {"name": "Donatur 2", "amount": 250000},
+    {"name": "Donatur 3", "amount": 150000},
+    {"name": "Donatur 4", "amount": 100000},
+    {"name": "Donatur 5", "amount": 75000},
+    {"name": "Donatur 6", "amount": 50000},
+    {"name": "Donatur 7", "amount": 50000},
+    {"name": "Donatur 8", "amount": 25000},
+    {"name": "Donatur 9", "amount": 20000},
+    {"name": "Donatur 10", "amount": 10000}
+  ]
+}
