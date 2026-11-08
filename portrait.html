@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<title>DF Widget</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+@property --hue{syntax:"<number>";inherits:true;initial-value:0}
+@property --rot{syntax:"<angle>";inherits:false;initial-value:0deg}
+:root{--panel:rgba(7,10,9,.82);--line:rgba(150,170,130,.22);--text:#c8cec2;--dim:#7a8472;--live:#a23434;
+  --acc:hsl(calc(85 + var(--hue)) 22% 46%);--acc2:hsl(calc(18 + var(--hue)*.3) 45% 44%);--glow:hsl(calc(85 + var(--hue)) 30% 40% / .55);
+  animation:hue 8s linear infinite}
+@keyframes hue{0%{--hue:0}35%{--hue:110}70%{--hue:-40}100%{--hue:0}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent;overflow:hidden;font-family:Rajdhani,sans-serif;color:var(--text)}
+body.bg{background:#1a211c}
+.mono{font-family:"Share Tech Mono",monospace}
+.w{display:none;position:absolute;left:0;top:0}
+.panel{position:absolute;background:var(--panel);border:1px solid var(--line);
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.panel::before{content:"";position:absolute;inset:0;padding:2px;
+  background:conic-gradient(from var(--rot),transparent 0 65%,var(--acc) 85%,transparent 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  animation:spin 4s linear infinite}
+@keyframes spin{to{--rot:360deg}}
+
+/* ===== NAMETAG 520x110 ===== */
+#tag{width:520px;height:110px}
+#tag .panel{left:4px;top:8px;right:4px;bottom:8px;display:flex;align-items:center;gap:18px;padding:0 24px}
+.live{display:flex;align-items:center;gap:8px;background:var(--live);color:#efdede;padding:4px 12px;font-weight:700;font-size:22px;letter-spacing:3px}
+.live i{width:10px;height:10px;border-radius:50%;background:#efdede;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.15}}
+.t1{font-size:36px;font-weight:700;letter-spacing:4px;line-height:1;position:relative;text-shadow:0 0 10px var(--glow)}
+.t1::after{content:attr(data-t);position:absolute;inset:0;color:var(--acc2);opacity:0;animation:gl 4s infinite steps(1)}
+@keyframes gl{0%,90%,100%{opacity:0;transform:none}91%{opacity:.8;transform:translate(-3px,1px);clip-path:inset(0 0 55% 0)}94%{opacity:.8;transform:translate(3px,0);clip-path:inset(55% 0 0 0)}}
+.t2{font-size:15px;color:var(--acc);letter-spacing:4px;margin-top:4px}
+.bars{margin-left:auto;display:flex;gap:4px;align-items:flex-end;height:30px}
+.bars b{width:5px;background:var(--acc);animation:eq 1s ease-in-out infinite}
+@keyframes eq{0%,100%{height:20%}50%{height:100%}}
+
+/* ===== CARD 560x380 ===== */
+#card{width:560px;height:400px}
+#card .panel{left:180px;top:20px;width:370px;height:350px;display:flex;flex-direction:column;align-items:center;padding:18px 0 0 40px}
+.qt{font-size:30px;font-weight:700;letter-spacing:5px}
+.qt span{color:var(--acc)}
+.qslot{position:relative;width:210px;height:210px;margin-top:10px}
+.qslot .k{position:absolute;width:24px;height:24px;border:3px solid var(--acc)}
+.k.a{left:-10px;top:-10px;border-right:0;border-bottom:0}.k.b{right:-10px;top:-10px;border-left:0;border-bottom:0}
+.k.c{left:-10px;bottom:-10px;border-right:0;border-top:0}.k.d{right:-10px;bottom:-10px;border-left:0;border-top:0}
+.qslot .laser{position:absolute;left:-6px;right:-6px;height:3px;background:var(--acc2);box-shadow:0 0 10px var(--acc2);opacity:.8;animation:laser 2s ease-in-out infinite alternate}
+@keyframes laser{from{top:2%}to{top:96%}}
+#qr{width:210px;height:210px;padding:8px;background:#b9c0b2}
+.qs{font-size:16px;color:var(--dim);letter-spacing:2px;margin-top:14px}
+.vy{position:absolute;left:0;top:30px;width:250px;height:340px;animation:bob 2s ease-in-out infinite;filter:drop-shadow(0 8px 12px rgba(0,0,0,.7))}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.vy .glow{animation:vg 2s ease-in-out infinite}
+@keyframes vg{50%{opacity:.5}}
+.vy .flame{animation:fl .25s ease-in-out infinite alternate;transform-origin:50% 0;transform-box:fill-box}
+@keyframes fl{from{transform:scaleY(.7);opacity:.7}to{transform:scaleY(1.15);opacity:1}}
+.vy .arm{animation:arm 2s ease-in-out infinite;transform-origin:20% 30%;transform-box:fill-box}
+@keyframes arm{50%{transform:rotate(-6deg)}}
+.nameplate{position:absolute;left:72px;top:366px;font-size:16px;letter-spacing:5px;color:var(--acc2);background:var(--panel);padding:2px 12px;border:1px solid var(--line)}
+</style></head>
+<body>
+<!-- NAMETAG -->
+<div class="w" id="tag">
+  <div class="panel">
+    <div class="live"><i></i>LIVE</div>
+    <div><div class="t1" data-t="DELTA FORCE">DELTA FORCE</div><div class="t2 mono">HAZARD OPS // ON AIR</div></div>
+    <div class="bars"><b></b><b style="animation-delay:-.3s"></b><b style="animation-delay:-.6s"></b><b style="animation-delay:-.15s"></b><b style="animation-delay:-.45s"></b></div>
+  </div>
+</div>
+
+<!-- SAWER CARD + VYRON -->
+<div class="w" id="card">
+  <div class="panel">
+    <div class="qt">SAWER <span>YUK</span></div>
+    <div class="qslot"><div id="qr"></div><div class="laser"></div><div class="k a"></div><div class="k b"></div><div class="k c"></div><div class="k d"></div></div>
+    <div class="qs mono" id="qs">SCAN &amp; DUKUNG OPERASI</div>
+  </div>
+  <svg class="vy" viewBox="0 0 250 340">
+    <defs>
+      <linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a4046"/><stop offset="1" stop-color="#1c2024"/></linearGradient>
+      <linearGradient id="hm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#454c53"/><stop offset="1" stop-color="#1f2327"/></linearGradient>
+      <linearGradient id="fm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9a35a"/><stop offset=".5" stop-color="#b0543a"/><stop offset="1" stop-color="#b0543a" stop-opacity="0"/></linearGradient>
+    </defs>
+    <ellipse cx="125" cy="330" rx="66" ry="7" fill="rgba(0,0,0,.5)"/>
+    <!-- thrusters on back -->
+    <g>
+      <rect x="44" y="176" width="26" height="62" rx="8" fill="#22272b" stroke="#3b4248" stroke-width="2"/>
+      <rect x="180" y="176" width="26" height="62" rx="8" fill="#22272b" stroke="#3b4248" stroke-width="2"/>
+      <rect x="48" y="236" width="18" height="8" fill="#15181a"/><rect x="184" y="236" width="18" height="8" fill="#15181a"/>
+      <path class="flame" d="M48 244 Q57 300 66 244 Z" fill="url(#fm)"/>
+      <path class="flame" d="M184 244 Q193 300 202 244 Z" fill="url(#fm)" style="animation-delay:-.12s"/>
+    </g>
+    <!-- legs -->
+    <rect x="94" y="262" width="28" height="56" rx="9" fill="#24292d"/><rect x="128" y="262" width="28" height="56" rx="9" fill="#24292d"/>
+    <rect x="96" y="276" width="24" height="16" rx="4" fill="#353c42"/><rect x="130" y="276" width="24" height="16" rx="4" fill="#353c42"/>
+    <rect x="88" y="310" width="38" height="16" rx="6" fill="#121416"/><rect x="124" y="310" width="38" height="16" rx="6" fill="#121416"/>
+    <!-- torso armor -->
+    <path d="M76 190 Q125 170 174 190 L170 262 Q125 276 80 262 Z" fill="url(#ar)"/>
+    <path d="M96 198 L154 198 L148 240 L102 240 Z" fill="#2c3237" stroke="#4a525a" stroke-width="2"/>
+    <path d="M118 206 L132 206 L136 222 L125 232 L114 222 Z" fill="#14171a" stroke="var(--acc2)" stroke-width="2"/>
+    <circle cx="125" cy="218" r="4" fill="var(--acc2)" class="glow"/>
+    <rect x="86" y="246" width="78" height="8" rx="2" fill="#1a1d20"/>
+    <!-- shoulder pads + dragon patch -->
+    <path d="M60 192 Q70 174 96 180 L92 214 Q70 216 60 206 Z" fill="#30363b"/>
+    <path d="M190 192 Q180 174 154 180 L158 214 Q180 216 190 206 Z" fill="#30363b"/>
+    <rect x="66" y="188" width="22" height="16" rx="2" fill="#6e2a24"/>
+    <path d="M70 200 Q74 190 78 196 Q82 202 85 192" fill="none" stroke="#d6b07a" stroke-width="2" stroke-linecap="round"/>
+    <!-- left arm -->
+    <rect x="58" y="206" width="26" height="54" rx="12" fill="#2b3135"/><circle cx="71" cy="262" r="11" fill="#141719"/>
+    <!-- rifle + right arm -->
+    <g class="arm">
+      <rect x="110" y="244" width="128" height="14" rx="3" fill="#15181a"/>
+      <rect x="206" y="238" width="40" height="6" rx="2" fill="#262a2d"/>
+      <rect x="176" y="234" width="26" height="10" rx="2" fill="#2d3236"/><rect x="180" y="236" width="6" height="6" fill="var(--acc2)" class="glow"/>
+      <rect x="140" y="256" width="12" height="28" rx="3" fill="#15181a"/>
+      <rect x="160" y="208" width="26" height="50" rx="12" fill="#2b3135" transform="rotate(-28 173 230)"/>
+      <circle cx="150" cy="256" r="11" fill="#141719"/>
+    </g>
+    <!-- HEAD: full-face helmet -->
+    <path d="M44 112 Q44 30 125 28 Q206 30 206 112 Q206 176 125 184 Q44 176 44 112 Z" fill="url(#hm)"/>
+    <path d="M58 82 Q125 60 192 82" fill="none" stroke="#565e66" stroke-width="3"/>
+    <!-- visor -->
+    <path d="M60 100 Q125 84 190 100 L184 138 Q125 150 66 138 Z" fill="#0d1012" stroke="#59626a" stroke-width="3"/>
+    <path class="glow" d="M74 116 Q125 106 176 116 L174 124 Q125 116 76 124 Z" fill="var(--acc2)"/>
+    <path d="M80 104 Q100 98 118 98" stroke="rgba(255,255,255,.18)" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- jaw / respirator -->
+    <path d="M90 148 Q125 172 160 148 L156 168 Q125 182 94 168 Z" fill="#23282c"/>
+    <rect x="110" y="154" width="30" height="14" rx="4" fill="#15181a"/>
+    <line x1="116" y1="158" x2="116" y2="165" stroke="#3a4146" stroke-width="2"/><line x1="125" y1="158" x2="125" y2="165" stroke="#3a4146" stroke-width="2"/><line x1="134" y1="158" x2="134" y2="165" stroke="#3a4146" stroke-width="2"/>
+    <!-- ear module + antenna -->
+    <rect x="34" y="100" width="18" height="40" rx="6" fill="#1a1e21"/><rect x="198" y="100" width="18" height="40" rx="6" fill="#1a1e21"/>
+    <line x1="207" y1="100" x2="216" y2="58" stroke="#2b3034" stroke-width="3"/><circle cx="216" cy="56" r="4" fill="var(--acc)" class="glow"/>
+    <!-- top rail -->
+    <rect x="100" y="34" width="50" height="12" rx="4" fill="#2a2f34"/>
+  </svg>
+  <div class="nameplate mono">VYRON</div>
+</div>
+
+<script>
+const p=new URLSearchParams(location.search);
+const w=p.get("w")||"portrait";
+if(w==="landscape"||w==="portrait"){
+  // layout penuh: kedua widget di pojok, tengah layar kosong/transparan
+  const L=w==="landscape", W=L?1920:1080, H=L?1080:1920;
+  const st=document.createElement("div"); st.style.cssText=`position:absolute;left:0;top:0;width:${W}px;height:${H}px;transform-origin:0 0`;
+  document.body.appendChild(st);
+  const tag=document.getElementById("tag"), card=document.getElementById("card");
+  st.append(tag,card); tag.style.display=card.style.display="block";
+  const pos=L?{tag:[24,24,.8],card:[W-560*.7-20,H-400*.7-20,.7]}:{tag:[24,210,.9],card:[W-560*.78-10,700,.78]};
+  for(const [el,[x,y,s]] of [[tag,pos.tag],[card,pos.card]]){el.style.left=x+"px";el.style.top=y+"px";el.style.transform=`scale(${s})`;el.style.transformOrigin="0 0";}
+  const fit=()=>{const s=Math.min(innerWidth/W,innerHeight/H);st.style.transform=`translate(${(innerWidth-W*s)/2}px,${(innerHeight-H*s)/2}px) scale(${s})`;};
+  fit(); addEventListener("resize",fit);
+} else document.getElementById(w).style.display="block";
+if(p.get("bg")) document.body.classList.add("bg");
+const link=p.get("link");
+if(link && window.QRCode){ new QRCode(document.getElementById("qr"),{text:link,width:194,height:194,colorDark:"#0b0f0c",colorLight:"#b9c0b2"}); }
+else document.getElementById("qr").style.background="transparent";   // slot kosong: taruh gambar QR sendiri di belakang video
+if(p.get("note")) document.getElementById("qs").textContent=p.get("note");
+window.seek=t=>document.getAnimations().forEach(a=>{a.pause();a.currentTime=t;});
+</script>
+</body></html>
