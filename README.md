@@ -4,11 +4,17 @@ Banner animasi Delta Force + chibi Vyron (fan art) + QR saweran + TOP GLOBAL don
 Link untuk sumber **Link** di TikTok LIVE Studio:
 - Banner strip (portrait, 1440x480): https://raw.githack.com/nauyand/nauyand/live-overlay/banner.html
 - Banner lebar (landscape, 1920x400): https://raw.githack.com/nauyand/nauyand/live-overlay/banner-wide.html
-- Chibi Vyron saja (transparan, 320x400): https://raw.githack.com/nauyand/nauyand/live-overlay/vyron.svg
 
 ## Chibi Vyron
-Gambar dan animasinya ada di `vyron.svg`: melayang pakai jetpack, melambai, berkedip, sesekali
-mata senyum ^^ dengan hati muncul di atas antena. Dipakai otomatis oleh semua banner dan widget.
+- `vyron.webp` = gambar utama (Vyron jempol). Gambar ini bergerak naik-turun pelan di banner dan kartu sawer.
+- Folder `stiker/` berisi stiker ekspresi: `halo`, `gas`, `oke`, `wow`, `gg`, `focus`, `intip`, `brb`, `duduk`.
+  Di banner, stiker muncul bergantian di dekat kepala Vyron, ganti tiap 7 detik.
+- Atur lewat link banner:
+  - `?reaksi=brb` = stiker tetap (misalnya untuk scene BRB)
+  - `?reaksi=halo,gg` = urutan stiker sendiri
+  - `?reaksi=off` = tanpa stiker
+  - `?pose=duduk` = ganti gambar utama dengan stiker lain
+- Semua gambar transparan, jadi bisa juga dipasang sendiri sebagai sumber **Image** di TikTok LIVE Studio.
 
 ## QR saweran
 Upload foto QR kamu ke repo dengan nama **`qr.png`**, dan banner akan langsung memakainya.

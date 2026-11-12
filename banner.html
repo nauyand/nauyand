@@ -84,8 +84,18 @@ html:has(body.bg){background:linear-gradient(#2b3a33 0 40%,#000 40%)}
 .live i{width:9px;height:9px;border-radius:50%;background:#eadada;animation:blink 1s infinite}
 @keyframes blink{50%{opacity:.15}}
 
-/* CHIBI VYRON — gambar & animasinya ada di vyron.svg */
-.chibi{position:absolute;object-fit:contain;object-position:50% 100%;filter:drop-shadow(0 10px 12px rgba(0,0,0,.6))}
+/* CHIBI VYRON (vyron.webp) + stiker reaksi (folder stiker/) */
+.chibi{position:absolute;object-fit:contain;object-position:50% 100%;transform-origin:50% 100%;
+  filter:drop-shadow(0 10px 12px rgba(0,0,0,.6));animation:vybob 2.6s ease-in-out infinite}
+@keyframes vybob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-1.2deg)}}
+.react{position:absolute;object-fit:contain;object-position:50% 100%;opacity:0;transform-origin:50% 90%;filter:drop-shadow(0 6px 8px rgba(0,0,0,.6))}
+.react.show{animation:rpop 7s ease-out both}
+@keyframes rpop{0%{opacity:0;transform:scale(.3) rotate(-14deg)}6%{opacity:1;transform:scale(1.12) rotate(4deg)}10%{transform:scale(1) rotate(0)}
+  30%{transform:translateY(-4px) rotate(-2deg)}50%{transform:translateY(0) rotate(1.5deg)}70%{transform:translateY(-4px) rotate(-1deg)}
+  86%{opacity:1;transform:scale(1) rotate(0)}94%,100%{opacity:0;transform:scale(.5) rotate(10deg)}}
+.react.stay{animation:rin2 .6s ease-out both,rfloat 2.4s ease-in-out .6s infinite}
+@keyframes rin2{from{opacity:0;transform:scale(.3) rotate(-14deg)}70%{opacity:1;transform:scale(1.1)}to{opacity:1;transform:none}}
+@keyframes rfloat{0%,100%{opacity:1;transform:translateY(0) rotate(0)}50%{opacity:1;transform:translateY(-6px) rotate(-2deg)}}
 
 /* TOP GLOBAL dari overlay Tako (?tako=OVERLAY_KEY) */
 .lb .pbody.tako{padding:0;--z:.72}
@@ -97,8 +107,9 @@ html:has(body.bg){background:linear-gradient(#2b3a33 0 40%,#000 40%)}
 /* ================= layout STRIP (portrait, 1440x480) ================= */
 .strip #stage{width:1440px;height:480px}
 .strip .frame{left:0;top:150px;width:1440px;height:330px}
-.strip .chibi{left:-10px;top:20px;width:360px;height:460px}
-.strip .logo{left:330px;top:160px;width:600px;height:310px}
+.strip .chibi{left:-14px;top:40px;width:384px;height:440px}
+.strip .react{left:292px;top:0;width:160px;height:170px}
+.strip .logo{left:370px;top:160px;width:560px;height:310px}
 .strip .logo .big{font-size:70px}
 .strip .logo .sub{font-size:20px}
 .strip .qrp{left:930px;top:110px;width:220px;height:350px}
@@ -108,8 +119,9 @@ html:has(body.bg){background:linear-gradient(#2b3a33 0 40%,#000 40%)}
 /* ================= layout WIDE (landscape, 1920x400) ================= */
 .wide #stage{width:1920px;height:400px}
 .wide .frame{left:0;top:120px;width:1920px;height:280px}
-.wide .chibi{left:10px;top:-10px;width:290px;height:410px}
-.wide .logo{left:320px;top:130px;width:880px;height:260px}
+.wide .chibi{left:0;top:6px;width:350px;height:394px}
+.wide .react{left:300px;top:0;width:140px;height:150px}
+.wide .logo{left:360px;top:130px;width:850px;height:260px}
 .wide .logo .big{font-size:96px}
 .wide .logo .sub{font-size:22px}
 .wide .qrp{left:1230px;top:80px;width:240px;height:300px}
@@ -138,8 +150,9 @@ html:has(body.bg){background:linear-gradient(#2b3a33 0 40%,#000 40%)}
     <div class="pbody" id="lb"></div>
   </div>
 
-  <!-- Chibi Vyron (fan art) -->
-  <img class="chibi" src="vyron.svg" alt="Vyron">
+  <!-- Chibi Vyron (fan art) + stiker reaksi -->
+  <img class="chibi" id="vy" src="vyron.webp" alt="Vyron">
+  <img class="react" id="react" alt="">
 </div>
 
 <script>
@@ -189,6 +202,19 @@ html:has(body.bg){background:linear-gradient(#2b3a33 0 40%,#000 40%)}
   } else {
     renderLB();
     setInterval(async()=>{await load();renderLB();},60000);   // update otomatis tiap 1 menit
+  }
+
+  // CHIBI: ?pose=duduk (ganti gambar utama) | ?reaksi=brb (stiker tetap) / ?reaksi=halo,gg (urutan sendiri) / ?reaksi=off
+  const STK=["halo","gas","oke","wow","gg","focus","intip","brb","duduk"], ok=n=>STK.includes(n);
+  const pose=(get("pose")||"").toLowerCase(); if(ok(pose)) document.getElementById("vy").src="stiker/"+pose+".webp";
+  const rq=(get("reaksi")||"").toLowerCase(), rx=document.getElementById("react");
+  if(rq==="off"||rq==="0") rx.remove();
+  else {
+    const list=(rq?rq.split(","):["halo","gas","oke","wow","gg","focus"]).map(s=>s.trim()).filter(ok);
+    list.forEach(n=>{new Image().src="stiker/"+n+".webp";});   // preload biar tidak kedip
+    let i=0;
+    const next=()=>{ rx.className="react"; void rx.offsetWidth; rx.src="stiker/"+list[i++%list.length]+".webp"; rx.className="react "+(list.length===1?"stay":"show"); };
+    if(list.length){ next(); if(list.length>1) setInterval(next,7000); }
   }
 
   for(let i=0;i<20;i++){const d=document.createElement("div");d.className="dust";

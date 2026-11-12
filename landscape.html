@@ -50,8 +50,8 @@ body.bg{background:#1a211c}
 @keyframes laser{from{top:2%}to{top:96%}}
 #qr{width:210px;height:210px;padding:8px;background:#b9c0b2}
 .qs{font-size:16px;color:var(--dim);letter-spacing:2px;margin-top:14px}
-.vy{position:absolute;left:-6px;top:6px;width:262px;height:364px;object-fit:contain;object-position:50% 100%;filter:drop-shadow(0 8px 12px rgba(0,0,0,.6))}
-.nameplate{position:absolute;left:72px;top:366px;font-size:16px;letter-spacing:5px;color:var(--acc2);background:var(--panel);padding:2px 12px;border:1px solid var(--line)}
+.vy{position:absolute;left:-8px;top:40px;width:270px;height:340px;object-fit:contain;object-position:50% 100%;transform-origin:50% 100%;filter:drop-shadow(0 8px 12px rgba(0,0,0,.6));animation:vybob 2s ease-in-out infinite}
+@keyframes vybob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-1.2deg)}}
 </style></head>
 <body>
 <!-- NAMETAG -->
@@ -70,9 +70,8 @@ body.bg{background:#1a211c}
     <div class="qslot"><div id="qr"></div><div class="laser"></div><div class="k a"></div><div class="k b"></div><div class="k c"></div><div class="k d"></div></div>
     <div class="qs mono" id="qs">SCAN &amp; DUKUNG OPERASI</div>
   </div>
-  <!-- Chibi Vyron (fan art) — gambar & animasi di vyron.svg -->
-  <img class="vy" src="vyron.svg" alt="Vyron">
-  <div class="nameplate mono">VYRON</div>
+  <!-- Chibi Vyron (fan art) -->
+  <img class="vy" src="vyron.webp" alt="Vyron">
 </div>
 
 <script>
