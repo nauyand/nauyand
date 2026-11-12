@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -24 320 400" width="320" height="400">
+<!-- Chibi Vyron (fan art) — animasi CSS di dalam file, bisa dipakai lewat <img> atau ditanam langsung -->
+<style>
+.vy-hover{animation:vy-hover 2s ease-in-out infinite}
+@keyframes vy-hover{50%{transform:translateY(-10px)}}
+.vy-shadow{animation:vy-shadow 2s ease-in-out infinite;transform-origin:160px 366px}
+@keyframes vy-shadow{50%{transform:scale(.82);opacity:.35}}
+.vy-head{animation:vy-tilt 4s ease-in-out infinite;transform-origin:160px 214px}
+@keyframes vy-tilt{0%,100%{transform:rotate(0)}30%{transform:rotate(-4deg)}70%{transform:rotate(3deg)}}
+.vy-flame{animation:vy-flame .2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}
+.vy-flame.b{animation-delay:-.1s}
+@keyframes vy-flame{from{transform:scaleY(.72) scaleX(.9);opacity:.75}to{transform:scaleY(1.12);opacity:1}}
+.vy-wave{animation:vy-wave 1s ease-in-out infinite;transform-origin:110px 236px}
+@keyframes vy-wave{0%,100%{transform:rotate(2deg)}50%{transform:rotate(34deg)}}
+.vy-gun{animation:vy-gun 2s ease-in-out infinite;transform-origin:214px 236px}
+@keyframes vy-gun{50%{transform:rotate(-4deg)}}
+.vy-eo{animation:vy-eo 8s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes vy-eo{0%{opacity:1;transform:scaleY(1)}18%{transform:scaleY(1)}19.5%{transform:scaleY(.08)}21%{transform:scaleY(1)}
+  46%{transform:scaleY(1)}47.5%{transform:scaleY(.08)}49%{transform:scaleY(1)}60%{opacity:1}61%{opacity:0}77%{opacity:0}78%{opacity:1}
+  90%{transform:scaleY(1)}91.5%{transform:scaleY(.08)}93%{transform:scaleY(1)}100%{opacity:1;transform:scaleY(1)}}
+.vy-eh{opacity:0;animation:vy-eh 8s infinite}
+@keyframes vy-eh{0%,60%{opacity:0}61%,77%{opacity:1}78%,100%{opacity:0}}
+.vy-blush{animation:vy-blush 8s infinite}
+@keyframes vy-blush{0%,58%{opacity:.45}63%,75%{opacity:.95}80%,100%{opacity:.45}}
+.vy-heart{opacity:0;animation:vy-heart 8s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes vy-heart{0%,60%{opacity:0;transform:translateY(14px) scale(.4)}64%{opacity:1;transform:translateY(0) scale(1.1)}66%{transform:scale(1)}
+  74%{opacity:1;transform:translateY(-10px) scale(1)}80%,100%{opacity:0;transform:translateY(-24px) scale(.8)}}
+.vy-blink{animation:vy-blink 1s steps(1) infinite}
+@keyframes vy-blink{50%{opacity:.25}}
+.vy-glint{animation:vy-glint 4s ease-in-out infinite}
+@keyframes vy-glint{0%,55%{transform:translateX(-120px);opacity:0}65%{opacity:.55}100%{transform:translateX(150px);opacity:0}}
+.vy-pulse{animation:vy-pulse 2s ease-in-out infinite}
+@keyframes vy-pulse{50%{opacity:.45}}
+</style>
+<defs>
+  <linearGradient id="vy-helm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#606b76"/><stop offset=".45" stop-color="#3d4650"/><stop offset="1" stop-color="#252b32"/></linearGradient>
+  <linearGradient id="vy-armor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a545e"/><stop offset="1" stop-color="#272d34"/></linearGradient>
+  <linearGradient id="vy-visor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b232b"/><stop offset="1" stop-color="#07090c"/></linearGradient>
+  <linearGradient id="vy-eye" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c9"/><stop offset=".45" stop-color="#ffc35a"/><stop offset="1" stop-color="#ff8a2a"/></linearGradient>
+  <linearGradient id="vy-fire" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6d6"/><stop offset=".35" stop-color="#ffbe4d"/><stop offset=".75" stop-color="#ff6a3d" stop-opacity=".8"/><stop offset="1" stop-color="#ff4a2d" stop-opacity="0"/></linearGradient>
+  <filter id="vy-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="vy-vclip"><path d="M74 112 Q160 92 246 112 Q258 115 256 128 L250 168 Q247 182 232 184 Q160 194 88 184 Q73 182 70 168 L64 128 Q62 115 74 112 Z"/></clipPath>
+</defs>
+
+<ellipse class="vy-shadow" cx="160" cy="366" rx="74" ry="9" fill="rgba(0,0,0,.45)"/>
+
+<g class="vy-hover" stroke-linejoin="round">
+  <!-- jetpack (Dynamic Propulsion) -->
+  <g stroke="#0e1114" stroke-width="4">
+    <rect x="72" y="212" width="36" height="72" rx="15" fill="#2c333b"/>
+    <rect x="212" y="212" width="36" height="72" rx="15" fill="#2c333b"/>
+    <path d="M79 282 L101 282 L97 298 L83 298 Z" fill="#15191d"/>
+    <path d="M219 282 L241 282 L237 298 L223 298 Z" fill="#15191d"/>
+  </g>
+  <rect x="74" y="232" width="32" height="7" fill="#e8812f"/><rect x="214" y="232" width="32" height="7" fill="#e8812f"/>
+  <path d="M80 222 Q84 216 92 216" stroke="rgba(255,255,255,.2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M220 222 Q224 216 232 216" stroke="rgba(255,255,255,.2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path class="vy-flame" d="M83 298 Q90 352 97 298 Z" fill="url(#vy-fire)"/>
+  <path class="vy-flame b" d="M223 298 Q230 352 237 298 Z" fill="url(#vy-fire)"/>
+
+  <!-- kaki -->
+  <g stroke-linecap="round">
+    <line x1="138" y1="300" x2="136" y2="326" stroke="#0e1114" stroke-width="32"/>
+    <line x1="182" y1="300" x2="184" y2="326" stroke="#0e1114" stroke-width="32"/>
+    <line x1="138" y1="300" x2="136" y2="326" stroke="#20262c" stroke-width="24"/>
+    <line x1="182" y1="300" x2="184" y2="326" stroke="#20262c" stroke-width="24"/>
+  </g>
+  <rect x="125" y="306" width="24" height="13" rx="6" fill="#56616b" stroke="#0e1114" stroke-width="3"/>
+  <rect x="171" y="306" width="24" height="13" rx="6" fill="#56616b" stroke="#0e1114" stroke-width="3"/>
+  <!-- sepatu -->
+  <g stroke="#0e1114" stroke-width="4">
+    <path d="M112 334 Q112 324 124 324 L148 324 Q156 324 156 334 L156 348 Q156 354 150 354 L112 354 Q102 354 102 345 Q102 334 112 334 Z" fill="#171b20"/>
+    <path d="M208 334 Q208 324 196 324 L172 324 Q164 324 164 334 L164 348 Q164 354 170 354 L208 354 Q218 354 218 345 Q218 334 208 334 Z" fill="#171b20"/>
+  </g>
+  <path d="M106 348 L154 348 M166 348 L214 348" stroke="#3a424b" stroke-width="3"/>
+
+  <!-- badan -->
+  <path d="M106 216 Q160 196 214 216 L222 286 Q224 308 200 310 L120 310 Q96 308 98 286 Z" fill="url(#vy-armor)" stroke="#0e1114" stroke-width="4"/>
+  <path d="M206 222 L214 288 Q215 302 200 304 L192 304 Q206 296 204 280 Z" fill="rgba(0,0,0,.25)"/>
+  <!-- pelat dada + lambang naga (Wei Long) -->
+  <path d="M124 224 Q160 212 196 224 L192 270 Q160 284 128 270 Z" fill="#59636e" stroke="#0e1114" stroke-width="3"/>
+  <path d="M130 230 Q160 220 190 230" stroke="rgba(255,255,255,.22)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M145 233 L175 233 L177 252 Q160 268 143 252 Z" fill="#c0392b" stroke="#4a100c" stroke-width="2.5"/>
+  <path d="M150 254 Q151 242 159 246 Q167 250 169 239" fill="none" stroke="#f2c46d" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="169" cy="239" r="2.2" fill="#f2c46d"/>
+  <!-- pensil-roket (dari kisah masa kecilnya) nyelip di kantong -->
+  <g transform="translate(121 276) rotate(-14)">
+    <rect x="-4.5" y="-14" width="9" height="24" rx="1.5" fill="#f5c542" stroke="#0e1114" stroke-width="2"/>
+    <path d="M-4.5 -14 L0 -25 L4.5 -14 Z" fill="#f1d3a1" stroke="#0e1114" stroke-width="2"/>
+    <path d="M-1.6 -21.5 L0 -25 L1.6 -21.5 Z" fill="#2b2b2b"/>
+    <path d="M-4.5 2 L-9 9 L-4.5 7 Z M4.5 2 L9 9 L4.5 7 Z" fill="#e0503d" stroke="#0e1114" stroke-width="1.5"/>
+  </g>
+  <!-- sabuk + kantong -->
+  <rect x="102" y="288" width="116" height="14" rx="5" fill="#1b2025" stroke="#0e1114" stroke-width="3"/>
+  <rect x="152" y="287" width="16" height="16" rx="3" fill="#8a949c" stroke="#0e1114" stroke-width="2.5"/>
+  <rect x="108" y="282" width="26" height="22" rx="5" fill="#3a434c" stroke="#0e1114" stroke-width="3"/>
+  <rect x="186" y="282" width="26" height="22" rx="5" fill="#3a434c" stroke="#0e1114" stroke-width="3"/>
+  <circle class="vy-pulse" cx="199" cy="292" r="3" fill="#ffb547"/>
+
+  <!-- lengan kiri: melambai -->
+  <g class="vy-wave">
+    <g stroke-linecap="round">
+      <line x1="110" y1="236" x2="76" y2="254" stroke="#0e1114" stroke-width="30"/>
+      <line x1="110" y1="236" x2="76" y2="254" stroke="#3d4650" stroke-width="22"/>
+    </g>
+    <circle cx="68" cy="258" r="15" fill="#262c33" stroke="#0e1114" stroke-width="4"/>
+    <ellipse cx="62" cy="245" rx="5" ry="8" fill="#262c33" stroke="#0e1114" stroke-width="3" transform="rotate(-25 62 245)"/>
+  </g>
+
+  <!-- lengan kanan + peluncur QLL32 -->
+  <g class="vy-gun">
+    <g stroke-linecap="round">
+      <line x1="212" y1="236" x2="222" y2="276" stroke="#0e1114" stroke-width="30"/>
+      <line x1="212" y1="236" x2="222" y2="276" stroke="#3d4650" stroke-width="22"/>
+    </g>
+    <g transform="rotate(-22 228 272)" stroke="#0e1114" stroke-width="4">
+      <rect x="176" y="262" width="16" height="20" rx="4" fill="#20262c"/>
+      <rect x="186" y="258" width="94" height="28" rx="9" fill="#2f363e"/>
+      <rect x="228" y="249" width="24" height="11" rx="3" fill="#1b2025" stroke-width="3"/>
+      <rect x="274" y="251" width="24" height="42" rx="9" fill="#46505a"/>
+      <rect x="211" y="282" width="15" height="22" rx="4" fill="#1b2025" stroke-width="3"/>
+      <rect x="256" y="258" width="7" height="28" fill="#e8812f" stroke="none"/>
+      <path d="M194 264 L270 264" stroke="rgba(255,255,255,.18)" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="298" cy="272" rx="4" ry="13" fill="#0b0d10" stroke-width="2"/>
+      <circle class="vy-pulse" cx="246" cy="254" r="2.6" fill="#ffb547" stroke="none"/>
+    </g>
+    <circle cx="223" cy="282" r="14" fill="#262c33" stroke="#0e1114" stroke-width="4"/>
+  </g>
+
+  <!-- bantalan bahu -->
+  <g stroke="#0e1114" stroke-width="4">
+    <ellipse cx="110" cy="226" rx="20" ry="15" fill="#4f5a64"/>
+    <ellipse cx="210" cy="226" rx="20" ry="15" fill="#4f5a64"/>
+  </g>
+  <rect x="99" y="220" width="20" height="12" rx="2" fill="#c0392b" stroke="#4a100c" stroke-width="2" transform="rotate(-10 109 226)"/>
+
+  <!-- KEPALA (helm besar ala chibi) -->
+  <g class="vy-head">
+    <!-- antena -->
+    <line x1="270" y1="120" x2="292" y2="52" stroke="#0e1114" stroke-width="7" stroke-linecap="round"/>
+    <line x1="270" y1="120" x2="292" y2="52" stroke="#4a545e" stroke-width="3" stroke-linecap="round"/>
+    <circle class="vy-blink" cx="293" cy="49" r="7" fill="#ff9a3c" stroke="#0e1114" stroke-width="3"/>
+    <!-- hati saat senang -->
+    <path class="vy-heart" d="M297 10 C297 2 286 0 283 8 C280 0 269 2 269 10 C269 20 283 26 283 30 C283 26 297 20 297 10 Z" fill="#ff6f86" stroke="#0e1114" stroke-width="2.5"/>
+
+    <!-- helm -->
+    <path d="M160 18 C238 18 280 62 280 128 C280 186 236 220 160 220 C84 220 40 186 40 128 C40 62 82 18 160 18 Z" fill="url(#vy-helm)" stroke="#0e1114" stroke-width="5"/>
+    <path d="M280 128 C280 186 236 220 160 220 C204 210 264 178 264 122 C264 84 250 56 230 38 C262 56 280 88 280 128 Z" fill="rgba(0,0,0,.22)"/>
+    <path d="M70 84 Q100 40 160 34" stroke="rgba(255,255,255,.28)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M62 100 Q160 64 258 100" stroke="#0e1114" stroke-opacity=".45" stroke-width="3" fill="none"/>
+    <!-- rel atas -->
+    <rect x="126" y="10" width="68" height="20" rx="8" fill="#2a3138" stroke="#0e1114" stroke-width="4"/>
+    <rect x="140" y="16" width="40" height="5" rx="2" fill="#4f5a64"/>
+    <!-- stiker roket pensil -->
+    <g transform="translate(92 66) rotate(-30)">
+      <circle r="17" fill="#e9edf0" stroke="#0e1114" stroke-width="2.5"/>
+      <g transform="scale(.75)">
+        <rect x="-4.5" y="-10" width="9" height="20" rx="1.5" fill="#f5c542" stroke="#0e1114" stroke-width="2"/>
+        <path d="M-4.5 -10 L0 -20 L4.5 -10 Z" fill="#f1d3a1" stroke="#0e1114" stroke-width="2"/>
+        <path d="M-4.5 4 L-9 12 L-4.5 10 Z M4.5 4 L9 12 L4.5 10 Z" fill="#e0503d"/>
+        <path d="M-3 10 Q0 19 3 10 Z" fill="#ff9a3c"/>
+      </g>
+    </g>
+
+    <!-- visor -->
+    <path d="M74 112 Q160 92 246 112 Q258 115 256 128 L250 168 Q247 182 232 184 Q160 194 88 184 Q73 182 70 168 L64 128 Q62 115 74 112 Z" fill="url(#vy-visor)" stroke="#0e1114" stroke-width="5"/>
+    <path d="M84 120 Q160 104 236 120" stroke="rgba(255,255,255,.14)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- pipi merona -->
+    <g class="vy-blush" fill="#ff6f86">
+      <ellipse cx="94" cy="172" rx="13" ry="5.5"/>
+      <ellipse cx="226" cy="172" rx="13" ry="5.5"/>
+    </g>
+    <!-- mata LED -->
+    <g class="vy-eo" filter="url(#vy-glow)">
+      <ellipse cx="124" cy="142" rx="15" ry="21" fill="url(#vy-eye)"/>
+      <ellipse cx="196" cy="142" rx="15" ry="21" fill="url(#vy-eye)"/>
+      <circle cx="119" cy="133" r="5.5" fill="#fff"/><circle cx="191" cy="133" r="5.5" fill="#fff"/>
+      <circle cx="129" cy="151" r="2.6" fill="#fff" opacity=".85"/><circle cx="201" cy="151" r="2.6" fill="#fff" opacity=".85"/>
+    </g>
+    <g class="vy-eh" filter="url(#vy-glow)" fill="none" stroke="#ffc35a" stroke-width="7" stroke-linecap="round">
+      <path d="M108 150 Q124 126 140 150"/>
+      <path d="M180 150 Q196 126 212 150"/>
+    </g>
+    <g clip-path="url(#vy-vclip)"><g transform="skewX(-25)"><rect class="vy-glint" x="150" y="80" width="18" height="130" fill="#fff"/></g></g>
+
+    <!-- respirator kecil -->
+    <rect x="140" y="191" width="40" height="18" rx="8" fill="#20262c" stroke="#0e1114" stroke-width="3.5"/>
+    <path d="M152 196 L152 204 M160 196 L160 204 M168 196 L168 204" stroke="#56616b" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- modul telinga -->
+    <g stroke="#0e1114" stroke-width="4">
+      <circle cx="44" cy="140" r="24" fill="#2c333b"/>
+      <circle cx="276" cy="140" r="24" fill="#2c333b"/>
+      <circle cx="44" cy="140" r="12" fill="#46505a" stroke-width="3"/>
+      <circle cx="276" cy="140" r="12" fill="#46505a" stroke-width="3"/>
+    </g>
+    <circle class="vy-pulse" cx="44" cy="140" r="4" fill="#ffb547"/>
+    <circle class="vy-pulse" cx="276" cy="140" r="4" fill="#ffb547"/>
+  </g>
+</g>
+</svg>
