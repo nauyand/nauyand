@@ -2,9 +2,6 @@
 <div align="center">
 
 <img src="./assets/hero.svg" width="100%" alt="YUAN ANDRATA — IoT Engineer · Mobile Developer · Prompt Engineer" />
-
-<sub>✨ <a href="https://nauyand.github.io/nauyand/"><b>Buka versi interaktif</b></a>: tiap bagian dibangun ulang setiap kali kamu scroll ke sana</sub>
-
 <img src="./assets/about.svg" width="100%" alt="Tentang saya" />
 
 <img src="./assets/skills.svg" width="100%" alt="Tech stack: C/C++, Python, Kotlin, JavaScript, HTML/CSS, Arduino, ESP8266, ESP32, Raspberry Pi, PlatformIO, MQTT, Mosquitto, Modbus TCP, RabbitMQ, OpenCV, Android Studio, Linux VPS, Teltonika FMB125, Prompt Engineering" />
@@ -23,7 +20,5 @@
 <img src="https://streak-stats.demolab.com?user=nauyand&theme=tokyonight&hide_border=true" alt="GitHub streak" />
 
 <img src="./assets/footer.svg" width="100%" alt="Build selesai" />
-
-<sub>Animasi diputar saat halaman dibuka. Muat ulang halaman untuk menonton para kursor membangunnya lagi.</sub>
 
 </div>
